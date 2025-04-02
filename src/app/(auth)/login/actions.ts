@@ -6,8 +6,10 @@ import { loginSchema } from "./schema"
 import { PrismaClient } from "@prisma/client"
 import { checkHashedPassowrd, hashPassword } from "@/server/bcrypt"
 import jwt from "jsonwebtoken"
-import { saveSession } from "@/server/session"
+import { deleteSession, saveSession } from "@/server/session"
 import db from "../../../../prisma/prisma"
+import { revalidateTag } from "next/cache"
+import { redirect } from "next/navigation"
 
 export async function createSession(form: z.infer<typeof loginSchema>): Promise<LoginFormState> {
 
@@ -50,4 +52,10 @@ export async function createSession(form: z.infer<typeof loginSchema>): Promise<
         status: 200,
     }
 
+}
+
+export async function destroySession() {
+    await deleteSession()
+    revalidateTag("/")
+    redirect("/login")
 }

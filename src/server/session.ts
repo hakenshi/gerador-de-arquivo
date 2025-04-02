@@ -1,4 +1,4 @@
-'server-only'
+'use server'
 
 import { SessionType } from "@/types/session"
 import { Users } from "@prisma/client"

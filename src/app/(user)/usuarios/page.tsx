@@ -1,12 +1,8 @@
-import React from 'react'
 
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import { Button, buttonVariants } from '@/components/ui/button'
-import { getUsers } from './actions'
-import { useForm } from 'react-hook-form'
-import UserForm from '../../../components/forms/user/user-form'
-import DataTable from '@/components/data-table/data-table'
 import { userColumns } from '@/components/data-table/columns/user-columns'
+import DataTable from '@/components/data-table/data-table'
+import UserForm from '../../../components/forms/user/user-form'
+import { getUsers } from './actions'
 
 export default async function UsuariosPage() {
 
