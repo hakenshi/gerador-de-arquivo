@@ -10,11 +10,12 @@ import { Button } from "@/components/ui/button"
 import { LoginFormState, LoginSchema } from "@/types/login"
 import { createSession } from "./actions"
 import { useState } from "react"
-import { redirect } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
 import { toast } from "sonner"
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -32,7 +33,7 @@ export default function LoginPage() {
     if (session.status === 400) {
       setIsLoading(false)
 
-      if(session.errors === undefined){
+      if (session.errors === undefined) {
         toast("Error is undefined.")
         return
       }
@@ -44,7 +45,7 @@ export default function LoginPage() {
     }
 
     if (session.status === 200) {
-      redirect("/")
+      router.push("/")
     }
 
   }

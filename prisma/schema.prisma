@@ -8,12 +8,19 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model Users {
+model users {
   id         Int      @unique @default(autoincrement())
   firstName  String
   secondName String
-  email      String
+  email      String   @unique
   password   String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+}
+
+model documents {
+  id        Int      @unique @default(autoincrement())
+  title     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
