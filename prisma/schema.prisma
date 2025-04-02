@@ -8,7 +8,7 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model users {
+model Users {
   id         Int      @unique @default(autoincrement())
   firstName  String
   secondName String
@@ -18,7 +18,7 @@ model users {
   updatedAt  DateTime @updatedAt
 }
 
-model documents {
+model Documents {
   id        Int      @unique @default(autoincrement())
   title     String
   createdAt DateTime @default(now())
