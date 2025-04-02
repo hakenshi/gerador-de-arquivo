@@ -1,14 +1,14 @@
 import { hashPassword } from "@/server/bcrypt";
-import { PrismaClient, Users } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import db from "./prisma";
 
-const db = new PrismaClient()
 try {
     const defaultUser = await db.users.create({
         data: {
-            firstName: "jorge",
-            secondName: "da silva",
-            email: "jorge@email.com",
-            password: await hashPassword("123"),
+            firstName: "Usuário",
+            secondName: "Admin",
+            email: "admin@admin.com",
+            password: await hashPassword("admin"),
         }
     })
     console.log(defaultUser)
